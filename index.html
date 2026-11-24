@@ -1,137 +1,262 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Primer Sitio</title>
+    <title>Albaro Rodó | Portfolio - Análisis y Desarrollo de Software</title>
+    <meta name="description" content="Portfolio de Albaro Rodó, estudiante de Técnico Analista de Sistemas y Desarrollo de Software en Salta, Argentina. Proyectos, CV y contacto.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="layout"> 
-        <header class="header-principal">
-            <div class="logo">
+    <!-- Enlace para saltar al contenido (accesibilidad con teclado) -->
+    <a href="#contenido" class="saltar">Saltar al contenido</a>
+
+    <!-- ===== ENCABEZADO Y MENÚ ===== -->
+    <header class="header">
+        <div class="contenedor header-interno">
+            <a href="#inicio" class="logo">Albaro Rodó<span class="logo-punto">.</span></a>
+            <nav class="nav" aria-label="Menú principal">
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#carta">Carta</a>
+                <a href="#cv">CV</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenido">
+
+        <!-- ===== HERO (PRESENTACIÓN) ===== -->
+        <section class="hero" id="inicio">
+            <div class="contenedor hero-interno">
+                <p class="hero-etiqueta">Salta, Argentina · Disponible para pasantía</p>
                 <h1>Albaro Rodó</h1>
-            </div> 
-            <nav class="nav-menu"> 
-                <a href="index.html">Inicio</a>
-                <a href="#Proyectos">Proyectos</a>
-                <a href="contacto.html">Contacto</a>
-            </nav>
-        </header>
-        
-        <aside class="sidebar">
-            <nav class="nav-sidebar">
-                <p><strong>Menú Lateral</strong></p>
-                <ul>
-                    <li><a href="#Inicio">Perfil</a></li>
-                    <li><a href="#Proyectos">Habilidades</a></li>
-                    <li><a href="contacto.html">Enviar Mensaje</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <main class="main-contenido">
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Desarrollador Web Junior</h1>
-                    <p>Analista de Sistemas en formación enfocado en soluciones eficientes.</p>
-                    <a href="#Proyectos" class="btn-cta">Ver mis proyectos</a>
+                <p class="hero-rol">Estudiante de Análisis y Desarrollo de Software<br>Orientado a Análisis Funcional</p>
+                <p class="hero-texto">Combino formación técnica en desarrollo web y backend con experiencia en comunicación y gestión administrativa.</p>
+                <div class="hero-botones">
+                    <a href="#proyectos" class="btn btn-principal">Ver proyectos</a>
+                    <a href="assets/cv/CV-Albaro-Rodo.pdf" class="btn btn-secundario" download>Descargar CV</a>
                 </div>
-            </section> 
-            
-            <section id="proyectos" class="seccion-proyectos">
-    <h2>Mis Proyectos</h2>
-    
-    <div class="contenedor-galeria">
-        
-        <article class="tarjeta-proyecto">
-            <span>🚀</span> <h3>Proyecto 1</h3>
-            <p>Descripción breve de lo que aprendí o hice aquí.</p>
-        </article>
-
-        <article class="tarjeta-proyecto">
-            <span>💻</span>
-            <h3>Proyecto 2</h3>
-            <p>Descripción breve de lo que aprendí o hice aquí.</p>
-        </article>
-
-        <article class="tarjeta-proyecto">
-            <span>📱</span>
-            <h3>Proyecto 3</h3>
-            <p>Descripción breve de lo que aprendí o hice aquí.</p>
-        </article>
-
-        <article class="tarjeta-proyecto">
-            <span>🌐</span>
-            <h3>Proyecto 4</h3>
-            <p>Descripción breve de lo que aprendí o hice aquí.</p>
-        </article>
-
-    </div>
-             </section>
-        <main>
-    
-    <section id="Inicio" class="seccion-perfil">
-    <div class="perfil-container">
-        <h2>Bienvenido</h2>
-        <p>Hola soy Albaro, estudio Analista de Sistemas en Salta.</p>
-        <img src="images/Foto.perfil.png" alt="Foto de perfil de Albaro Rodo" class="perfil-foto">
-    </div>
-</section>
-
-    </section>
-
-<section class="cards" id="Proyectos">
-    <h2>Mis Proyectos y Habilidades</h2>
-    <div class="contenedor-cards">
-        <article class="card">
-            <h3>Sistemas y Programación</h3>
-            <p>Desarrollo de lógica y algoritmos utilizando HTML, CSS y Python para la resolución de problemas complejos.</p>
-        </article>
-
-        <article class="card">
-            <h3>Soporte Técnico</h3>
-            <p>Mantenimiento y optimización de hardware y software, asegurando el rendimiento óptimo de los equipos.</p>
-        </article>
-
-        <article class="card">
-            <h3>Docente en Educación Primaria</h3>
-            <p>Implementación y administración de plataformas digitales y recursos tecnológicos para la optimización de procesos de enseñanza-aprendizaje.</p>
-        </article>
-    </div>
-</section>
-
-<section id="Contacto">
-
-    <section id="Contacto">
-        <h2>Contacto</h2>
-        <p>Puedes contactarme con algunos de los siguientes medios</p>
-        <ul>
-            <li><strong>GitHub:</strong> <a href="https://github.com/albarorodo1234-oss" target="_blank">albarorodo1234-oss</a></li>
-            <li><strong>Correo:</strong> <a href="mail:albaro@gmail.com">albaro@gmail.com</a></li>
-            <li><strong>Telefono</strong> <a href="+543870000000">+543870000000</a></li>
-        </ul>
-    </section>
-
-</main>
-
-    <footer class="footer-principal">
-        <div class="footer-contenido">
-            <p>&copy; 2026 Albaro Rodo - Analista de Sistemas</p>
-            <div class="redes-sociales">
-                <a href="https://github.com/" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
-                <a href="https://instagram.com/" target="_blank">Instagram</a>
             </div>
+        </section>
+
+        <!-- ===== SOBRE MÍ ===== -->
+        <section class="seccion" id="sobre-mi">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Sobre mí</h2>
+                <div class="sobre-mi">
+                    <div class="sobre-mi-texto">
+                        <p>Soy Albaro Rodó, de Salta, Argentina. Estudio la carrera de <strong>Técnico Analista de Sistemas y Desarrollo de Software</strong> en el IES N° 6001 (2.º año, egreso previsto en 2027).</p>
+                        <p>Soy Profesor de Educación Primaria y trabajo como celador administrativo en instituciones educativas, donde gestiono documentación, registros y la carga de datos en la plataforma SINIDE. Esa experiencia me dio práctica en comunicarme con distintas personas y en ordenar la información, habilidades que hoy aplico al análisis y desarrollo de software.</p>
+                        <p>En la carrera trabajé con desarrollo web, bases de datos y backend en Python. Me interesa especialmente el <strong>análisis funcional</strong>: entender cómo trabaja una organización y convertir sus necesidades en soluciones de software.</p>
+                    </div>
+
+                    <aside class="datos" aria-label="Datos principales">
+                        <h3>Datos principales</h3>
+                        <dl>
+                            <dt>Formación</dt>
+                            <dd>Técnico Analista de Sistemas y Desarrollo de Software (en curso)</dd>
+                            <dt>Título docente</dt>
+                            <dd>Profesor de Educación Primaria</dd>
+                            <dt>Experiencia</dt>
+                            <dd>Celador administrativo (junio 2025 – actualidad)</dd>
+                            <dt>Idiomas</dt>
+                            <dd>Inglés básico (oral) y técnico</dd>
+                            <dt>Busco</dt>
+                            <dd>Pasantía como Analista Funcional, remota o presencial</dd>
+                        </dl>
+                    </aside>
+                </div>
+
+                <h3 class="subtitulo">Conocimientos técnicos</h3>
+                <ul class="chips" aria-label="Conocimientos técnicos">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Bootstrap</li>
+                    <li>JavaScript</li>
+                    <li>PHP</li>
+                    <li>Laravel</li>
+                    <li>Python</li>
+                    <li>FastAPI</li>
+                    <li>MySQL</li>
+                    <li>PostgreSQL</li>
+                    <li>SQL</li>
+                    <li>Git y GitHub</li>
+                    <li>Figma</li>
+                    <li>Trello (Kanban)</li>
+                </ul>
+
+                <h3 class="subtitulo">Habilidades</h3>
+                <ul class="chips chips-suaves" aria-label="Habilidades">
+                    <li>Trabajo en equipo</li>
+                    <li>Comunicación</li>
+                    <li>Aprendizaje rápido</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== PROYECTOS (TARJETAS DE PRESENTACIÓN) ===== -->
+        <section class="seccion seccion-alterna" id="proyectos">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Proyectos</h2>
+                <p class="intro-seccion">Proyectos desarrollados durante mi formación. Cada tarjeta lleva al repositorio con el código y a las capturas del sistema.</p>
+
+                <div class="galeria-proyectos">
+
+                    <article class="tarjeta">
+                        <img src="assets/img/controlar-catalogo.png" alt="Catálogo de juegos de ControlAR con filtros de búsqueda" class="tarjeta-imagen" loading="lazy">
+                        <div class="tarjeta-cuerpo">
+                            <p class="tarjeta-etiqueta">Proyecto grupal · Práctica Profesional 2 · 2026</p>
+                            <h3>ControlAR – El Rincón de Hermes</h3>
+                            <p>Sistema web de gestión para un club de juegos de mesa de Salta: tienda con carrito y pago con Mercado Pago, ludoteca con reservas anticipadas y panel de administración con reportes. Presentado en la Exposición de Proyectos Informáticos (12/11/2026).</p>
+                            <p><strong>Mi rol:</strong> desarrollo del backend (API REST).</p>
+                            <ul class="tecnologias" aria-label="Tecnologías de ControlAR">
+                                <li>Python</li>
+                                <li>FastAPI</li>
+                                <li>SQLAlchemy</li>
+                                <li>PostgreSQL</li>
+                                <li>JWT</li>
+                                <li>pytest</li>
+                            </ul>
+                            <div class="tarjeta-acciones">
+                                <a href="https://github.com/Florare83/ControlAR" class="btn btn-chico" target="_blank" rel="noopener">Ver repositorio</a>
+                                <a href="#capturas-controlar" class="btn btn-chico btn-borde">Ver capturas</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta">
+                        <img src="assets/img/solemate-inicio.png" alt="Página de inicio del e-commerce SoleMate" class="tarjeta-imagen" loading="lazy">
+                        <div class="tarjeta-cuerpo">
+                            <p class="tarjeta-etiqueta">Proyecto individual · Programación Web · 2026</p>
+                            <h3>SoleMate – E-commerce de zapatillas</h3>
+                            <p>Tienda online con catálogo, búsqueda y filtros en vivo, registro e inicio de sesión con roles, y panel de administración de productos (alta, baja y modificación).</p>
+                            <p><strong>Mi rol:</strong> desarrollo completo (individual).</p>
+                            <ul class="tecnologias" aria-label="Tecnologías de SoleMate">
+                                <li>PHP 8.3</li>
+                                <li>MySQL (PDO)</li>
+                                <li>JavaScript</li>
+                                <li>Bootstrap 5</li>
+                                <li>MVC</li>
+                                <li>Laravel</li>
+                            </ul>
+                            <div class="tarjeta-acciones">
+                                <a href="https://github.com/albarorodo1234-oss/ecommerce-zapatillas" class="btn btn-chico" target="_blank" rel="noopener">Ver repositorio</a>
+                                <a href="#capturas-solemate" class="btn btn-chico btn-borde">Ver capturas</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Capturas de cada proyecto -->
+                <div class="capturas" id="capturas-controlar">
+                    <h3 class="subtitulo">Capturas de ControlAR</h3>
+                    <div class="capturas-grilla">
+                        <figure>
+                            <img src="assets/img/controlar-club.png" alt="Agenda de eventos del club en ControlAR" loading="lazy">
+                            <figcaption>Agenda de eventos del club</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="assets/img/controlar-catalogo.png" alt="Catálogo de juegos con filtros en ControlAR" loading="lazy">
+                            <figcaption>Catálogo de juegos con filtros</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="assets/img/controlar-mis-compras.png" alt="Historial de compras del cliente en ControlAR" loading="lazy">
+                            <figcaption>Historial de compras del cliente</figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="capturas" id="capturas-solemate">
+                    <h3 class="subtitulo">Capturas de SoleMate</h3>
+                    <div class="capturas-grilla">
+                        <figure>
+                            <img src="assets/img/solemate-inicio.png" alt="Página de inicio de SoleMate" loading="lazy">
+                            <figcaption>Página de inicio</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="assets/img/solemate-detalle.png" alt="Detalle de un producto en SoleMate" loading="lazy">
+                            <figcaption>Detalle de producto</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="assets/img/solemate-panel-admin.png" alt="Panel de administración de SoleMate" loading="lazy">
+                            <figcaption>Panel de administración</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CARTA DE PRESENTACIÓN ===== -->
+        <section class="seccion" id="carta">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Carta de presentación</h2>
+                <div class="carta">
+                    <p>Hola, gracias por visitar mi portfolio.</p>
+                    <p>Me interesa el análisis funcional: entender cómo trabaja una organización, relevar lo que necesita y transmitirlo con claridad al equipo de desarrollo. Mi formación docente y mi experiencia administrativa me dieron práctica en la comunicación y en la organización de la información, y la carrera me da las bases técnicas para dialogar con programadores y entender cómo se construye un sistema.</p>
+                    <p>Busco una pasantía, en modalidad remota o presencial en Salta, donde pueda aportar compromiso, trabajo en equipo y ganas de aprender, y seguir creciendo en el área IT.</p>
+                    <p>Si mi perfil te interesa, podés escribirme o descargar mi CV.</p>
+                    <p class="carta-firma">Albaro Rodó</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CURRÍCULUM ===== -->
+        <section class="seccion seccion-alterna" id="cv">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Currículum Vitae</h2>
+                <div class="cv-caja">
+                    <p>Mi CV resume mi formación, mi experiencia y mis proyectos en una página.</p>
+                    <div class="cv-botones">
+                        <a href="assets/cv/CV-Albaro-Rodo.pdf" class="btn btn-principal" target="_blank" rel="noopener">Ver CV</a>
+                        <a href="assets/cv/CV-Albaro-Rodo.pdf" class="btn btn-borde" download>Descargar CV (PDF)</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACTO ===== -->
+        <section class="seccion" id="contacto">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Contacto</h2>
+                <p class="intro-seccion">¿Te interesa mi perfil? Escribime por cualquiera de estos medios.</p>
+                <div class="contacto-grilla">
+                    <a class="contacto-tarjeta" href="mailto:albarorodo1234@gmail.com">
+                        <span class="contacto-titulo">Correo electrónico</span>
+                        <span class="contacto-dato">albarorodo1234@gmail.com</span>
+                    </a>
+                    <a class="contacto-tarjeta" href="https://www.linkedin.com/in/albaro-rodo" target="_blank" rel="noopener">
+                        <span class="contacto-titulo">LinkedIn</span>
+                        <span class="contacto-dato">linkedin.com/in/albaro-rodo</span>
+                    </a>
+                    <a class="contacto-tarjeta" href="https://github.com/albarorodo1234-oss" target="_blank" rel="noopener">
+                        <span class="contacto-titulo">GitHub</span>
+                        <span class="contacto-dato">github.com/albarorodo1234-oss</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== PIE DE PÁGINA ===== -->
+    <footer class="footer">
+        <div class="contenedor footer-interno">
+            <p>&copy; 2026 Albaro Rodó · Salta, Argentina</p>
+            <nav class="footer-enlaces" aria-label="Redes profesionales">
+                <a href="https://www.linkedin.com/in/albaro-rodo" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/albarorodo1234-oss" target="_blank" rel="noopener">GitHub</a>
+                <a href="mailto:albarorodo1234@gmail.com">Correo</a>
+            </nav>
         </div>
     </footer>
-    </div>
 </body>
 </html>

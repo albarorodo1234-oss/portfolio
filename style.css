@@ -1,389 +1,607 @@
-Codigo
-/* 1. Definición de Variables (Punto 1 del TP) [cite: 14, 15] */
+/* =========================================================
+   Portfolio de Albaro Rodó - Hoja de estilos
+   Diseño mobile-first: primero celular, después pantallas grandes
+   ========================================================= */
+
+/* ===== 1. VARIABLES (colores y medidas que se reutilizan) ===== */
 :root {
-    --color-primary: #2E75B6;    /* Azul para botones */
-    --color-secondary: #1B2A4A;  /* Azul oscuro para el Header */
-    --color-accent: #F59E0B;     /* Ámbar para resaltar */
-    --color-text: #334155;       /* Gris oscuro para el cuerpo del texto */
-    --color-bg: #1B2A4A;         /* Fondo de la página */
-    --radius: 8px;               /* Redondeado de bordes [cite: 23] */
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para tarjetas [cite: 24] */
-    --font-main: 'Inter', 'Segoe UI', Arial, sans-serif; /* Tipografía  */
+    --color-oscuro: #1B2A4A;      /* Azul marino: encabezado, títulos y pie */
+    --color-primario: #2E75B6;    /* Azul: enlaces y detalles */
+    --color-acento: #F59E0B;      /* Ámbar: botón principal y destacados */
+    --color-texto: #334155;       /* Gris oscuro: texto común */
+    --color-texto-suave: #64748B; /* Gris medio: textos secundarios */
+    --color-fondo: #FFFFFF;       /* Fondo general */
+    --color-fondo-alterno: #F4F7FB; /* Fondo de secciones alternas */
+    --color-borde: #E2E8F0;       /* Bordes suaves */
+    --radio: 12px;                /* Esquinas redondeadas */
+    --sombra: 0 4px 16px rgba(27, 42, 74, 0.08);
+    --sombra-hover: 0 12px 28px rgba(27, 42, 74, 0.16);
+    --fuente: 'Inter', 'Segoe UI', Arial, sans-serif;
+    --ancho-max: 1100px;          /* Ancho máximo del contenido */
 }
 
-
-/* Usar las variables */
-
-.header-principal { background: var(--color-secondary); }
-
-.boton { background: var(--color-primary); border-radius: var(--radius); }
-
-.tarjeta { box-shadow: var(--shadow); border-radius: var(--radius); }
-
-/* Cambiar el tema completo modificando SOLO las variables */
-
-.dark-theme { --color-bg: #1E293B; --color-text: #F8FAFC; }
-
-/* ===== DISEÑO MACRO: CSS GRID (Clase 9) ===== */
-.layout {
-    display: grid;
-    /* Sidebar fija a la izquierda y el contenido ocupa el resto */
-    grid-template-columns: 1fr; 
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "header"
-        "main"
-        "footer";
-    min-height: 100vh;
-    gap: 0; /* Según el patrón de la diapositiva [cite: 58] */
-}
-
-
-/* Asignación de áreas */
-.header-principal { grid-area: header; }
-.sidebar          { display: none; grid-area: sidebar; background: #F1F5F9; padding: 1rem; }
-.main-contenido   { grid-area: main; padding: 2rem; }
-.footer-principal { grid-area: footer; }
-/* ===== PUNTO EXTRA: LAYOUT CON CSS GRID (Teoría Clase 9) ===== */
-
-/* Este es el selector para la clase que pusiste en el HTML */
-
-
-/* ===== RESET BASICO ===== */
-* {
- margin: 0; /* Elimina margenes por defecto */
- padding: 0; /* Elimina relleno por defecto */
- box-sizing: border-box; /* Los bordes se incluyen en el ancho */
-}
-
-/* 2. Tipografía Profesional (Punto 2 del TP) */
-body {
-    font-family: var(--font-main);
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-size: 1rem;       /* 1rem = 16px como pide el TP */
-    line-height: 1.6;      /* Espaciado obligatorio */
-}
-
-h1 { font-size: 2.5rem; }  /* Tamaño pedido en consigna */
-h2 { font-size: 1.8rem; }  /* Tamaño pedido en consigna */
-h3 { font-size: 1.3rem; }  /* Tamaño pedido en consigna */
-
-h1, h2, h3 {
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--color-primary); /* Usamos tu variable para los títulos */
-}
-
-/* ===== HEADER ===== */
-/* 3. Navbar con Flexbox (Punto 3 del TP) */
-.header-principal {
-    display: flex;                  /* Activa Flexbox */
-    justify-content: space-between; /* Logo a la izquierda, links a la derecha */
-    align-items: center;            /* Centrado vertical */
-    
-    background-color: var(--color-secondary); /* Usa tu variable azul oscuro */
-    padding: 1rem 5%;               /* Espacio interno prolijo */
-    color: rgb(6, 109, 243);      /* Color de transición del texto */              
-}
-
-.header-principal h1 {
-    font-size: 1.5rem;              /* Tamaño moderado para el header */
+/* ===== 2. RESET BÁSICO ===== */
+*,
+*::before,
+*::after {
     margin: 0;
-    color: rgb(19, 19, 19);
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Contenedor de los links */
-.nav-menu {
-    display: flex;                  /* Los links también en fila */
-    gap: 1.5rem;                    /* Espacio entre cada link */
+html {
+    scroll-behavior: smooth;      /* Desplazamiento suave al hacer clic en el menú */
+    scroll-padding-top: 1rem;
 }
 
-.nav-menu a {
-    color: rgb(0, 0, 0);                   /* Texto color */
-    text-decoration: none;          /* Sin subrayado */
-    font-weight: 500;
-    transition: color 0.3s ease;    /* Transición suave para el hover */
+body {
+    font-family: var(--fuente);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
 }
 
-/* Efecto Hover obligatorio */
-.nav-menu a:hover {
-    color: var(--color-accent);     /* Cambia al naranja ámbar de tus variables */
-}
-
-/* ===== MAIN ===== */
-main {
- grid-area: main; 
- width: 100%; /* Ancho maximo */
- padding: 1rem; 
- margin: 0 auto; /* Centrar horizontalmente */
-}
-
-/* ===== SECCIONES ===== */
-section {
- background-color: rgb(89, 88, 95);
- border-radius: 8px; /* Esquinas redondeadas */
- padding: 2rem;
- margin-bottom: 2rem;
- box-shadow: 0 2px 5px rgb(56, 33, 33); /* Sombra suave */
-}
-/* ===== IMAGENES ===== */
 img {
- max-width: 100%; /* Nunca mas ancho que su contenedor */
- height: auto; /* Mantiene proporcion */
- border-radius: 8px;
- display: #270f91; 
- margin-left: auto;
- margin-right: auto;
-}
-/* ===== LISTAS ===== */
-ul, ol {
- padding-left: 2rem; /* Indentacion de la lista */
- margin-bottom: 1rem;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* --- Consigna 2: Estilos de Validación --- */
-
-/* 1. Verde para campos válidos */
-input:valid, textarea:valid {
-    border: 2px solid #16A34A;
-    background-color: #F0FFF4;
+a {
+    color: var(--color-primario);
 }
 
-/* 2. Rojo para campos inválidos (solo cuando el usuario ya escribió algo) */
-input:not(:placeholder-shown):invalid, 
-textarea:not(:placeholder-shown):invalid {
-    border: 2px solid #DC2626;
-    background-color: #FEF2F2;
+ul {
+    list-style: none;
 }
 
-/* 3. Foco: resalte azul cuando el usuario hace clic para escribir */
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: #2E75B6;
-    box-shadow: 0 0 0 3px rgba(46, 117, 182, 0.2);
+/* Contorno visible al navegar con el teclado (accesibilidad) */
+a:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
 }
 
-/* Estilo para que el formulario se vea ordenado */
-form {
-    max-width: 450px;
-    margin: 20px auto;
+/* Enlace "Saltar al contenido": oculto hasta que se usa el teclado */
+.saltar {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: var(--color-acento);
+    color: var(--color-oscuro);
+    padding: 0.5rem 1rem;
+    z-index: 100;
+}
+
+.saltar:focus {
+    left: 1rem;
+}
+
+/* Contenedor centrado que se usa en todas las secciones */
+.contenedor {
+    width: 100%;
+    max-width: var(--ancho-max);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* ===== 3. TIPOGRAFÍA ===== */
+h1,
+h2,
+h3 {
+    color: var(--color-oscuro);
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.2rem; }
+
+p + p {
+    margin-top: 0.9rem;
+}
+
+/* ===== 4. ENCABEZADO Y MENÚ (Flexbox) ===== */
+.header {
+    position: relative;           /* En celular no queda fijo, para no tapar contenido */
+    z-index: 50;
+    background-color: var(--color-oscuro);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header-interno {
+    display: flex;
+    flex-wrap: wrap;              /* En celulares el menú baja a otra línea */
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+.logo {
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo-punto {
+    color: var(--color-acento);
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+}
+
+.nav a {
+    color: #CBD5E1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav a:hover {
+    color: var(--color-acento);
+}
+
+/* ===== 5. HERO (presentación principal) ===== */
+.hero {
+    background: linear-gradient(135deg, var(--color-oscuro) 0%, #24427A 55%, var(--color-primario) 100%);
+    color: #FFFFFF;
+    padding: 4.5rem 0 4rem;
+}
+
+.hero-interno {
+    max-width: 760px;
+}
+
+.hero-etiqueta {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-acento);
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 999px;
+    padding: 0.25rem 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.hero h1 {
+    color: #FFFFFF;
+    font-size: 2.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-rol {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #E2E8F0;
+}
+
+.hero-texto {
+    color: #CBD5E1;
+    max-width: 600px;
+}
+
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+
+/* ===== 6. BOTONES ===== */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-principal {
+    background-color: var(--color-acento);
+    color: var(--color-oscuro);
+}
+
+.btn-principal:hover {
+    background-color: #FBBF24;
+}
+
+.btn-secundario {
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #FFFFFF;
+}
+
+.btn-secundario:hover {
+    background-color: #FFFFFF;
+    color: var(--color-oscuro);
+}
+
+.btn-borde {
+    border-color: var(--color-primario);
+    color: var(--color-primario);
+    background-color: transparent;
+}
+
+.btn-borde:hover {
+    background-color: var(--color-primario);
+    color: #FFFFFF;
+}
+
+.btn-chico {
+    padding: 0.45rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-chico:not(.btn-borde) {
+    background-color: var(--color-oscuro);
+    color: #FFFFFF;
+}
+
+/* ===== 7. SECCIONES ===== */
+.seccion {
+    padding: 4rem 0;
+}
+
+.seccion-alterna {
+    background-color: var(--color-fondo-alterno);
+}
+
+.titulo-seccion {
+    margin-bottom: 1.5rem;
+}
+
+/* Línea ámbar debajo de cada título de sección */
+.titulo-seccion::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin-top: 0.6rem;
+    border-radius: 2px;
+    background-color: var(--color-acento);
+}
+
+.intro-seccion {
+    color: var(--color-texto-suave);
+    max-width: 700px;
+    margin-bottom: 2rem;
+}
+
+.subtitulo {
+    margin: 2.5rem 0 1rem;
+}
+
+/* ===== 8. SOBRE MÍ (CSS Grid) ===== */
+.sobre-mi {
+    display: grid;
+    grid-template-columns: 1fr;   /* Celular: una sola columna */
+    gap: 2rem;
+}
+
+.datos {
+    background-color: var(--color-fondo-alterno);
+    border: 1px solid var(--color-borde);
+    border-left: 4px solid var(--color-primario);
+    border-radius: var(--radio);
+    padding: 1.5rem;
+}
+
+.datos h3 {
+    margin-bottom: 1rem;
+}
+
+.datos dt {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primario);
+}
+
+.datos dd {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.datos dd:last-child {
+    margin-bottom: 0;
+}
+
+/* Etiquetas ("chips") de tecnologías y habilidades */
+.chips,
+.tecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.chips li {
+    background-color: var(--color-oscuro);
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+}
+
+.chips-suaves li {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: var(--color-oscuro);
+}
+
+/* ===== 9. PROYECTOS: TARJETAS (galería auto-responsive con Grid) ===== */
+.galeria-proyectos {
+    display: grid;
+    /* Se adapta sola: 1 columna en celular, 2 en pantallas grandes */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 1.75rem;
+}
+
+.tarjeta {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-
-/* Estilos para centrar el contenido de la sección de inicio */
-.seccion-perfil {
-    padding: 3rem 1rem;       /* Espacio arriba/abajo (rem como pide el Punto 2) */
-    text-align: center;       /* Centra el texto H2 y el P */
-}
-
-.perfil-container {
-    display: flex;             /* Activamos Flexbox (preparación Punto 3) */
-    flex-direction: column;    /* Ponemos uno debajo de otro: Titulo, P e Imagen */
-    align-items: center;       /* Centra todo horizontalmente */
-    gap: 1.5rem;               /* Espacio entre los elementos */
-}
-
-.perfil-foto {
-    max-width: 200px;          /* El tamaño que ya tenías en el HTML */
-    width: 100%;
-    border-radius: var(--radius); /* Aplicamos variable de borde del TP [cite: 367] */
-    box-shadow: var(--shadow);    /* Aplicamos variable de sombra del TP [cite: 368] */
-    transition: transform 0.3s;   /* Preparamos para el punto de transiciones */
-}
-
-/* Un toque extra: que la foto se mueva un poquito al pasar el mouse */
-.perfil-foto:hover {
-    transform: scale(1.05);
-}
-
-/* ... (estilos del header arriba) ... */
-
-/* ===== PUNTO 5: HERO SECTION (Patrón 3 - Clase 8) ===== */
-.hero {
-    display: flex;            /* ¡ACTIVA Flexbox! */
-    justify-content: center;  /* Centrado horizontal */
-    align-items: center;      /* Centrado vertical */
-    
-    min-height: 80vh;         /* Alto pedido en tu consigna */
-    background: linear-gradient(135deg, #1B2A4A, #2E75B6); /* Degradado Clase 8 */
-    color: white;
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 600px;         /* Según teoría del Ing. Díaz */
-    padding: 2rem;
-}
-
-/* Estilo del Botón CTA */
-.btn-cta {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 12px 30px;
-    background-color: var(--color-accent);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 700;
-    transition: 0.3s;
-}
-
-.btn-cta:hover {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-/* ... (estilos de las tarjetas/Punto 4 abajo) ... */
-
-/* ===== PUNTO 4: SECCIÓN DE TARJETAS (Patrón 2 - Clase 8) ===== */
-
-.contenedor-cards {
-    display: flex;          /* Activa Flexbox según la teoría */
-    flex-wrap: wrap;        /* Permite que las tarjetas bajen si no hay espacio */
-    gap: 1.5rem;            /* Espacio entre tarjetas */
-    padding: 2rem 0;
-    justify-content: center; /* Centra las tarjetas si sobra espacio */
-}
-
-.card {
-    /* LA LÍNEA MÁGICA de la diapositiva: grow, shrink, basis */
-    flex: 1 1 280px;        
-    
-    background-color: white; 
-    padding: 20px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    color: var(--color-text); /* Para que el texto sea legible */
-    
-    /* Transiciones suaves para el Punto 4 */
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    overflow: hidden;             /* Recorta la imagen con las esquinas redondeadas */
+    box-shadow: var(--sombra);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto Hover pedido: transform + transition */
-.card:hover {
-    transform: translateY(-4px); 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-hover);
 }
 
-.card h3 {
+.tarjeta-imagen {
+    width: 100%;
+    aspect-ratio: 16 / 9;         /* Todas las imágenes con la misma proporción */
+    object-fit: cover;
+    object-position: top;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.tarjeta-cuerpo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.tarjeta-cuerpo p + p {
     margin-top: 0;
-    color: var(--color-primary);
 }
 
-/* ===== PUNTO 5: FOOTER (Cierre de Estructura) ===== */
-.footer-principal {
-    background-color: #1a1a1a; /* Fondo oscuro profesional [cite: 114] */
-    color: #ffffff;
-    padding: 3rem 0;
-    margin-top: 4rem;          /* Espacio extra tras el contenido */
+.tarjeta-etiqueta {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primario);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-.footer-contenido {
-    display: flex;             /* Activamos Flexbox [cite: 11] */
-    flex-direction: column;    /* Elementos uno sobre otro [cite: 14] */
-    align-items: center;       /* Centrado horizontal [cite: 20] */
-    gap: 1.5rem;               /* Espacio entre items [cite: 26] */
+.tecnologias li {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-oscuro);
+    background-color: var(--color-fondo-alterno);
+    border: 1px solid var(--color-borde);
+    padding: 0.2rem 0.7rem;
+    border-radius: 6px;
 }
 
-.footer-contenido p {
+.tarjeta-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: auto;             /* Empuja los botones al final de la tarjeta */
+    padding-top: 0.5rem;
+}
+
+/* Capturas de cada proyecto */
+.capturas-grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 1.25rem;
+}
+
+.capturas figure {
+    display: flex;                /* Imagen arriba y texto abajo */
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.capturas img {
+    width: 100%;                  /* Muestra la captura completa, sin recortes */
+}
+
+.capturas figcaption {
+    margin-top: auto;             /* Alinea los textos abajo aunque las imágenes midan distinto */
+    padding: 0.7rem 1rem;
     font-size: 0.9rem;
-    opacity: 0.8;
+    color: var(--color-texto-suave);
+    border-top: 1px solid var(--color-borde);
 }
 
-.redes-sociales {
-    display: flex;             /* Links en fila [cite: 66] */
-    gap: 2rem;                 /* Espacio entre redes [cite: 68] */
+/* ===== 10. CARTA DE PRESENTACIÓN ===== */
+.carta {
+    max-width: 780px;
+    background-color: var(--color-fondo-alterno);
+    border-left: 4px solid var(--color-acento);
+    border-radius: var(--radio);
+    padding: 2rem 1.5rem;
 }
 
-.redes-sociales a {
-    color: white;
+.carta-firma {
+    font-weight: 700;
+    color: var(--color-oscuro);
+}
+
+/* ===== 11. CURRÍCULUM ===== */
+.cv-caja {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--sombra);
+}
+
+.cv-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+/* ===== 12. CONTACTO ===== */
+.contacto-grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 1.25rem;
+}
+
+.contacto-tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-borde);
+    border-top: 4px solid var(--color-primario);
+    border-radius: var(--radio);
+    background-color: #FFFFFF;
+    box-shadow: var(--sombra);
     text-decoration: none;
-    transition: color 0.3s;    /* Transición suave [cite: 73] */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.redes-sociales a:hover {
-    color: var(--color-accent); /* Tu naranja ámbar [cite: 75] */
+.contacto-tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-hover);
+    border-top-color: var(--color-acento);
 }
 
-/* ===== PUNTO 7: GALERÍA AUTO-RESPONSIVE (Clase 9) ===== */
+.contacto-titulo {
+    font-weight: 700;
+    color: var(--color-oscuro);
+}
 
-.contenedor-galeria {
-    display: grid; /* Activamos la grilla [cite: 78] */
-    
-    /* LA LÍNEA MÁGICA: se adapta sola sin media queries [cite: 79, 97] */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    
-    gap: 1.25rem; /* Espaciado pedido en la consigna [cite: 80] */
+.contacto-dato {
+    color: var(--color-primario);
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;      /* Corta direcciones largas en pantallas chicas */
+}
+
+/* ===== 13. PIE DE PÁGINA ===== */
+.footer {
+    background-color: var(--color-oscuro);
+    color: #CBD5E1;
     padding: 2rem 0;
+    font-size: 0.9rem;
 }
 
-/* Estilo de las tarjetas individuales [cite: 91-96] */
-.tarjeta-proyecto {
-    background-color: #ffffff;
-    color: var(--color-text);
-    padding: 20px;
-    border-radius: var(--radius); /* Usamos tu variable de 8px [cite: 93] */
-    box-shadow: var(--shadow);    /* Usamos tu variable de sombra [cite: 95] */
+.footer-interno {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
     text-align: center;
-    border: 1px solid #e2e8f0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Para el hover */
 }
 
-/* Efecto Hover pedido en el punto 7 */
-.tarjeta-proyecto:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    border-color: var(--color-primary);
+.footer-enlaces {
+    display: flex;
+    gap: 1.5rem;
 }
 
-.tarjeta-proyecto span {
-    font-size: 2.5rem; /* Para que los emojis se vean grandes */
-    display: block;
-    margin-bottom: 1rem;
+.footer-enlaces a {
+    color: #FFFFFF;
+    text-decoration: none;
 }
 
-/* TP3 PUNTO 8 */
-/* ===== ETAPA 2: TABLETS (min-width: 768px) ===== */
+.footer-enlaces a:hover {
+    color: var(--color-acento);
+}
+
+/* ===== 14. TABLETS (desde 768px) ===== */
 @media (min-width: 768px) {
-    .layout {
-        /* Volvemos a las 2 columnas: Sidebar y Main */
-        grid-template-columns: 220px 1fr;
-        grid-template-areas:
-            "header  header"
-            "sidebar main"
-            "footer  footer";
+    html {
+        scroll-padding-top: 80px; /* Evita que el encabezado fijo tape los títulos */
     }
 
-    .sidebar {
-        display: block; /* ¡MÁGICO! El sidebar vuelve a aparecer */
-        background-color: #F1F5F9;
-        padding: 1.5rem;
-        border-right: 1px solid #e2e8f0;
+    .header {
+        position: sticky;         /* Desde tablet queda fijo arriba al hacer scroll */
+        top: 0;
     }
 
-    main {
-        padding: 2rem; /* Más espacio para respirar en pantallas grandes */
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+
+    .hero {
+        padding: 6rem 0 5.5rem;
+    }
+
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .seccion {
+        padding: 5rem 0;
+    }
+
+    .carta,
+    .cv-caja {
+        padding: 2.5rem;
+    }
+
+    .cv-caja {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-interno {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
-/* VISTA LAPTOPS O NOTEBOOK */ 
-/* ===== ETAPA 3: LAPTOPS (min-width: 1024px) ===== */
+/* ===== 15. COMPUTADORAS (desde 1024px) ===== */
 @media (min-width: 1024px) {
-    .layout {
-        /* Limitamos el ancho máximo a 1200px y centramos con margin auto */
-        max-width: 1200px;
-        margin: 0 auto;
-        box-shadow: 0 0 50px rgba(0,0,0,0.2); /* Un toque de sombra a los costados */
+    .sobre-mi {
+        grid-template-columns: 3fr 2fr;   /* Texto a la izquierda, datos a la derecha */
+        align-items: start;
     }
 }
 
-/* ===== ETAPA 4: MONITORES ULTRA-WIDE (min-width: 1440px) ===== */
-@media (min-width: 1440px) {
-    .layout {
-        /* En pantallas muy grandes, le damos un poco más de aire */
-        max-width: 1400px;
+/* ===== 16. ACCESIBILIDAD: menos movimiento si el usuario lo pidió ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
     }
 }
